@@ -13,14 +13,18 @@ class Validate
         return ( preg_match( $patern, $str ) != 0 );
     }
 
+
     /**
-     * @param $str
-     * @return string
+     * @param string $str
+     * @return bool
      */
-    public static function isNumberStatic($str) : string
+    public static function isNumberStatic(string $str) : bool
     {
         $patern = "/^[0-9]+$/u";
-        return ( preg_match( $patern, $str ) != 0 );
+        if(preg_match( $patern, $str ) != 0){
+            return true;
+        }
+        return false;
     }
 
     public function isAlfanumeric( $sir ) {
