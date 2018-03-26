@@ -1,6 +1,7 @@
 <?php 
 namespace Viorel\Validation;
 
+
 class Validate
 {
     public function __construct()
@@ -8,11 +9,19 @@ class Validate
 
     }
 
-    public function isNumber( $str ) {
+    /**
+     * @param string $str
+     * @return bool
+     */
+    public function isNumber(string $str) : bool
+    {
         $patern = "/^[0-9]+$/u";
-        return ( preg_match( $patern, $str ) != 0 );
-    }
 
+        if(preg_match( $patern, $str ) != 0){
+            return true;
+        }
+        return false;
+    }
 
     /**
      * @param string $str
@@ -20,17 +29,30 @@ class Validate
      */
     public static function isNumberStatic(string $str) : bool
     {
-        $patern = "/^[0-9]+$/u";
+        return $this->isNumber($str);
+    }
+
+    /**
+     * @param string $str
+     * @return bool
+     */
+    public function isAlphanumeric(string $str) :bool
+    {
+        return self::isAlphanumericStatic($str);
+    }
+
+    /**
+     * @param string $str
+     * @return bool
+     */
+    public static function isAlphanumericStatic(string $str) :bool
+    {
+        $patern = "/^[a-zA-Z0-9]+$/u";
+
         if(preg_match( $patern, $str ) != 0){
             return true;
         }
         return false;
-    }
-
-    public function isAlfanumeric( $sir ) {
-        $patern = "/^[a-zA-Z0-9]+$/u";
-
-        return ( preg_match( $patern, $sir ) != 0 );
     }
 
     public function isName( $str ) {
