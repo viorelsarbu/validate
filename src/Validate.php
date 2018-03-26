@@ -10,7 +10,16 @@ class Validate
 
     public function isNumber( $str ) {
         $patern = "/^[0-9]+$/u";
+        return ( preg_match( $patern, $str ) != 0 );
+    }
 
+    /**
+     * @param $str
+     * @return string
+     */
+    public static function isNumberStatic($str) : string
+    {
+        $patern = "/^[0-9]+$/u";
         return ( preg_match( $patern, $str ) != 0 );
     }
 
